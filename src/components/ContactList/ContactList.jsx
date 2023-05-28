@@ -1,31 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-export const ContactForm = ({ addContact }) => {
-  const [name, setName] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    addContact(name);
-    setName('');
-  };
-
+export const ContactList = ({ contacts, filter, deleteContact }) => {
+    const filteredContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
+    
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        required
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <button type="submit">Add Contact</button>
-    </form>
+    <ul>
+      {filteredContacts.map((contact) => (
+          <li key={contact.id}>
+          <span>{contact.name}: {contact.number}</span>
+          <button onClick={() => deleteContact(contact.id)}>Delete</button>
+        </li>
+      ))}
+    </ul>
   );
 };
 
-ContactForm.propTypes = {
-  addContact: PropTypes.func.isRequired,
+ContactList.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  filter: PropTypes.string.isRequired,
 };
