@@ -1,0 +1,4 @@
+.formName {
+    display: flex;
+    flex-direction: column;
+}

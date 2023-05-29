@@ -8,12 +8,15 @@ export const ContactFilter = ({ filter, setFilter }) => {
     
   return (
     <div>
+      <label>
+        Find contacts by name
       <input
         type="text"
         placeholder="Search contacts"
         value={filter}
         onChange={handleFilterChange}
-      />
+        />
+        </label>
     </div>
   );
 };
