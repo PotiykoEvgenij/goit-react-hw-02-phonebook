@@ -13,7 +13,7 @@ export const App = () => {
 
   return (
     <div>
-      <h1>Contact Book</h1>
+      <h1>Phonebook</h1>
       <ContactForm contacts={contacts} setContacts={setContacts} />
       <h2>Contacts</h2>
       <ContactFilter filter={filter} setFilter={setFilter} />

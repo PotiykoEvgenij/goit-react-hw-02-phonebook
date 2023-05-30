@@ -36,9 +36,9 @@ export const ContactForm = ({ contacts, setContacts }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label className={styles.formName}>
-        Name
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <label className={styles.formLabel}>
+        <span className={styles.formTittle}>Name</span>
       <input
         type="text"
         name="name"
@@ -50,8 +50,8 @@ export const ContactForm = ({ contacts, setContacts }) => {
         onChange={(e) => setName(e.target.value)}
         />
       </label>
-      <label>
-        Number
+      <label className={styles.formLabel}>
+        <span className={styles.formTittle}>Number</span>
         <input
         type="tel"
         name="number"
@@ -63,7 +63,7 @@ export const ContactForm = ({ contacts, setContacts }) => {
         onChange={(e) => setNumber(e.target.value)}
         />
         </label>
-      <button type="submit">Add Contact</button>
+      <button type="submit" className={styles.formButton}>Add Contact</button>
     </form>
   );
 };
